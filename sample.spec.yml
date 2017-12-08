@@ -1,0 +1,28 @@
+---
+name: classifier-service
+cpu: 1.0
+memory: 1024
+model: "s3://bucket-on-s3/path-to/model.pkl"
+instances: 1
+# To launch the service on GPU based instances (not supported for now)
+gpu: false
+# can also be a local file, just make sure it doesn't start with s3://
+requirements: "s3://bucket-on-s3/path-to/requirements.txt"
+
+## Push to Loggly
+loggly:
+	stag:
+		enabled: false
+	prod:
+		enabled: false
+
+## marathon-alerts integration
+alerts:
+	stag:
+		enabled: false
+		owners: "@ashwanthkumar, @sriram"
+		channel: "#ml-ops"
+	prod:
+		enabled: true
+		owners: "@ashwanthkumar, @sriram"
+		channel: "#ml-ops"
